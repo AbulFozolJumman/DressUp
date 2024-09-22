@@ -99,8 +99,7 @@ const LoginPage = () => {
               className="btn btn-circle "
               onClick={() =>
                 signIn("google", {
-                  callbackUrl:
-                    "https://nextjs-authentication-starter-pack.vercel.app/dashboard",
+                  callbackUrl: "https://dress-up-young.vercel.app/dashboard",
                 })
               }
             >
@@ -115,8 +114,7 @@ const LoginPage = () => {
               className="btn btn-circle"
               onClick={() =>
                 signIn("github", {
-                  callbackUrl:
-                    "https://nextjs-authentication-starter-pack.vercel.app/dashboard",
+                  callbackUrl: "https://dress-up-young.vercel.app/dashboard",
                 })
               }
             >
