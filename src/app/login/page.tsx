@@ -10,7 +10,6 @@ export type FormValues = {
   email: string;
   password: string;
 };
-
 const LoginPage = () => {
   const {
     register,
