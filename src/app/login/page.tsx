@@ -1,9 +1,12 @@
 "use client";
+import { loginUser } from "@/utils/actions/loginUser";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-type FormValues = {
+export type FormValues = {
   email: string;
   password: string;
 };
@@ -15,79 +18,112 @@ const LoginPage = () => {
     // formState: { errors },
   } = useForm<FormValues>();
 
+  const router = useRouter();
+
   const onSubmit = async (data: FormValues) => {
-    console.log(data);
+    // console.log(data);
+    try {
+      const res = await loginUser(data);
+      // console.log(res);
+      if (res.accessToken) {
+        alert(res.message);
+        localStorage.setItem("accessToken", res.accessToken);
+        router.push("/");
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      console.error(err.message);
+      throw new Error(err.message);
+    }
   };
 
   return (
     <div className="my-10">
       <h1 className="text-center text-4xl mb-5">
-        Login <span className="text-teal-600">Here</span>
+        Login <span className="text-accent">Here</span>
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         <div>
           <Image
             src="https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg?t=st=1710130697~exp=1710134297~hmac=f1b21d9c1823a0657d339c256a1c4ad8301168480e35b35aeba5106568a21010&w=740"
             width={500}
             height={200}
             alt="login page"
-            className="w-full h-[85%] object-cover"
+            className="w-full h-[85%]"
           />
         </div>
 
-        <div className="w-full md:w-[70%] shadow-lg bg-white p-6 rounded-lg">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div>
-              <label className="block text-lg font-medium">Email</label>
+        <div className="card w-[70%] h-[80%] shadow-xl bg-base-100">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            <div className="form-control mt-5">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
               <input
                 type="email"
                 {...register("email")}
                 placeholder="Email"
-                className="w-full p-3 border rounded-lg"
+                className="input input-bordered"
                 required
               />
             </div>
 
-            <div>
-              <label className="block text-lg font-medium">Password</label>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
               <input
                 {...register("password")}
                 type="password"
                 placeholder="Password"
-                className="w-full p-3 border rounded-lg"
+                className="input input-bordered"
                 required
               />
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700"
-            >
-              Login
-            </button>
-
-            <p className="text-center mt-4">
+            <div className="form-control mt-6">
+              <button type="submit" className="btn btn-accent btn-outline">
+                Login
+              </button>
+            </div>
+            <p className="text-center">
               Don&apos;t have an account?{" "}
-              <Link href="/register" className="text-teal-600 hover:underline">
+              <Link className="text-accent" href="/register">
                 Create an account
               </Link>
             </p>
           </form>
-          <p className="text-center mt-4">Or Sign Up Using</p>
-          <div className="flex justify-center space-x-4 mt-2">
-            <button className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+          <p className="text-center">Or Sign Up Using</p>
+          <div className="flex justify-center mb-10 mt-2">
+            <button
+              className="btn btn-circle "
+              onClick={() =>
+                signIn("google", {
+                  callbackUrl:
+                    "https://nextjs-authentication-starter-pack.vercel.app/dashboard",
+                })
+              }
+            >
               <Image
                 src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
-                width={30}
-                height={30}
+                width={50}
+                height={50}
                 alt="google logo"
               />
             </button>
-            <button className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+            <button
+              className="btn btn-circle"
+              onClick={() =>
+                signIn("github", {
+                  callbackUrl:
+                    "https://nextjs-authentication-starter-pack.vercel.app/dashboard",
+                })
+              }
+            >
               <Image
                 src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                width={30}
-                height={30}
+                width={35}
+                height={35}
                 alt="github logo"
               />
             </button>

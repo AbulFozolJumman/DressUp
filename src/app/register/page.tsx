@@ -1,8 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { registerUser } from "@/utils/actions/registerUser";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 export type UserData = {
@@ -18,11 +19,18 @@ const RegisterPage = () => {
     // formState: { errors },
   } = useForm<UserData>();
 
+  const router = useRouter();
+
   const onSubmit = async (data: UserData) => {
-    console.log(data);
+    // console.log(data);
 
     try {
-      // handle registration logic here
+      const res = await registerUser(data);
+      if (res.success) {
+        alert(res.message);
+        router.push("/login");
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error(err.message);
       throw new Error(err.message);
@@ -32,64 +40,67 @@ const RegisterPage = () => {
   return (
     <div className="my-10">
       <h1 className="text-center text-4xl mb-5">
-        Register <span className="text-teal-600">Now</span>
+        Register <span className="text-accent">Now</span>
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         <div>
           <Image
             src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?t=st=1710081713~exp=1710085313~hmac=f637c194f1f143e63a84950cbf978997453777c872adf4aebbbecdaa445601a1&w=740"
             width={500}
             height={200}
-            alt="register page"
-            className="w-full h-[85%] object-cover"
+            alt="login page"
+            className="w-full h-[85%]"
           />
         </div>
 
-        <div className="w-full md:w-[70%] shadow-lg bg-white p-6 rounded-lg">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div>
-              <label className="block text-lg font-medium">Full Name</label>
+        <div className="card w-[70%] h-[70%] shadow-xl bg-base-100">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body py-3">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Full Name</span>
+              </label>
               <input
                 type="text"
                 {...register("username")}
                 placeholder="User Name"
-                className="w-full p-3 border rounded-lg"
+                className="input input-bordered"
                 required
               />
             </div>
-
-            <div>
-              <label className="block text-lg font-medium">Email</label>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
               <input
                 type="email"
                 {...register("email")}
                 placeholder="Email"
-                className="w-full p-3 border rounded-lg"
+                className="input input-bordered"
                 required
               />
             </div>
 
-            <div>
-              <label className="block text-lg font-medium">Password</label>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
               <input
                 {...register("password")}
                 type="password"
                 placeholder="Password"
-                className="w-full p-3 border rounded-lg"
+                className="input input-bordered"
                 required
               />
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700"
-            >
-              Register
-            </button>
-
-            <p className="text-center mt-4">
+            <div className="form-control mt-6">
+              <button type="submit" className="btn btn-accent btn-outline">
+                Register
+              </button>
+            </div>
+            <p className="text-center">
               Already have an account?{" "}
-              <Link href="/login" className="text-teal-600 hover:underline">
+              <Link className="text-accent" href="/login">
                 Login
               </Link>
             </p>
