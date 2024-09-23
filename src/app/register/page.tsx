@@ -1,5 +1,4 @@
 "use client";
-
 import { registerUser } from "@/utils/actions/registerUser";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,17 +12,11 @@ export type UserData = {
 };
 
 const RegisterPage = () => {
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm<UserData>();
+  const { register, handleSubmit } = useForm<UserData>();
 
   const router = useRouter();
 
   const onSubmit = async (data: UserData) => {
-    // console.log(data);
-
     try {
       const res = await registerUser(data);
       if (res.success) {
@@ -40,67 +33,67 @@ const RegisterPage = () => {
   return (
     <div className="my-10">
       <h1 className="text-center text-4xl mb-5">
-        Register <span className="text-accent">Now</span>
+        Register <span className="text-indigo-600">Now</span>
       </h1>
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Image
-            src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?t=st=1710081713~exp=1710085313~hmac=f637c194f1f143e63a84950cbf978997453777c872adf4aebbbecdaa445601a1&w=740"
+            src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg"
             width={500}
             height={200}
-            alt="login page"
+            alt="register page"
             className="w-full h-[85%]"
           />
         </div>
 
-        <div className="card w-[70%] h-[70%] shadow-xl bg-base-100">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body py-3">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Full Name</span>
+        <div className="w-[70%] h-[70%] shadow-lg bg-white rounded-lg">
+          <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Full Name
               </label>
               <input
                 type="text"
                 {...register("username")}
-                placeholder="User Name"
-                className="input input-bordered"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 required
               />
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Email
               </label>
               <input
                 type="email"
                 {...register("email")}
-                placeholder="Email"
-                className="input input-bordered"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 required
               />
             </div>
 
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Password
               </label>
               <input
-                {...register("password")}
                 type="password"
-                placeholder="Password"
-                className="input input-bordered"
+                {...register("password")}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 required
               />
             </div>
 
-            <div className="form-control mt-6">
-              <button type="submit" className="btn btn-accent btn-outline">
-                Register
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none"
+            >
+              Register
+            </button>
+
             <p className="text-center">
               Already have an account?{" "}
-              <Link className="text-accent" href="/login">
+              <Link href="/login" className="text-indigo-600">
                 Login
               </Link>
             </p>

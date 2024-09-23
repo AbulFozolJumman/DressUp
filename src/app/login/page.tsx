@@ -10,20 +10,15 @@ export type FormValues = {
   email: string;
   password: string;
 };
+
 const LoginPage = () => {
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<FormValues>();
 
   const router = useRouter();
 
   const onSubmit = async (data: FormValues) => {
-    // console.log(data);
     try {
       const res = await loginUser(data);
-      // console.log(res);
       if (res.accessToken) {
         alert(res.message);
         localStorage.setItem("accessToken", res.accessToken);
@@ -39,12 +34,12 @@ const LoginPage = () => {
   return (
     <div className="my-10">
       <h1 className="text-center text-4xl mb-5">
-        Login <span className="text-accent">Here</span>
+        Login <span className="text-indigo-600">Here</span>
       </h1>
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Image
-            src="https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg?t=st=1710130697~exp=1710134297~hmac=f1b21d9c1823a0657d339c256a1c4ad8301168480e35b35aeba5106568a21010&w=740"
+            src="https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg"
             width={500}
             height={200}
             alt="login page"
@@ -52,55 +47,52 @@ const LoginPage = () => {
           />
         </div>
 
-        <div className="card w-[70%] h-[80%] shadow-xl bg-base-100">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-            <div className="form-control mt-5">
-              <label className="label">
-                <span className="label-text">Email</span>
+        <div className="w-[70%] h-[80%] shadow-lg bg-white rounded-lg">
+          <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Email
               </label>
               <input
                 type="email"
                 {...register("email")}
-                placeholder="Email"
-                className="input input-bordered"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 required
               />
             </div>
 
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Password
               </label>
               <input
                 {...register("password")}
                 type="password"
-                placeholder="Password"
-                className="input input-bordered"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 required
               />
             </div>
 
-            <div className="form-control mt-6">
-              <button type="submit" className="btn btn-accent btn-outline">
-                Login
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none"
+            >
+              Login
+            </button>
+
             <p className="text-center">
               Don&apos;t have an account?{" "}
-              <Link className="text-accent" href="/register">
+              <Link href="/register" className="text-indigo-600">
                 Create an account
               </Link>
             </p>
           </form>
-          <p className="text-center">Or Sign Up Using</p>
-          <div className="flex justify-center mb-10 mt-2">
+
+          <p className="text-center mt-4">Or Sign Up Using</p>
+          <div className="flex justify-center mt-4">
             <button
-              className="btn btn-circle "
-              onClick={() =>
-                signIn("google", {
-                  callbackUrl: "https://dress-up-young.vercel.app/dashboard",
-                })
-              }
+              className="mx-2 bg-white p-3 rounded-full shadow"
+              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
             >
               <Image
                 src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
@@ -110,12 +102,8 @@ const LoginPage = () => {
               />
             </button>
             <button
-              className="btn btn-circle"
-              onClick={() =>
-                signIn("github", {
-                  callbackUrl: "https://dress-up-young.vercel.app/dashboard",
-                })
-              }
+              className="mx-2 bg-white p-3 rounded-full shadow"
+              onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
             >
               <Image
                 src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
