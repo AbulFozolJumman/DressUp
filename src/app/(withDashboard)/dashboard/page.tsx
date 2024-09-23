@@ -1,9 +1,9 @@
-import { useSession } from "next-auth/react";
+import { authOptions } from "@/utils/authOptions";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 
-const Dashboard = () => {
-  const { data: session } = useSession();
-  console.log(session);
+const Dashboard = async () => {
+  const session = await getServerSession(authOptions);
 
   return (
     <div>
