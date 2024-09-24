@@ -1,6 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import { Session } from "next-auth";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -17,4 +18,12 @@ export const authOptions: NextAuthOptions = {
     signIn: "/login",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async session({ session }: { session: Session }) {
+      // This is called whenever a session is checked.
+      // Attach the role from the token to the session object.
+      session.user.role = "user";
+      return session;
+    },
+  },
 };

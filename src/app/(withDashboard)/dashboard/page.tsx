@@ -14,6 +14,9 @@ const DashboardPage = async () => {
           <h1 className="text-4xl text-center mt-10">
             Logged-in user email: {session?.user?.email}
           </h1>
+          <h1 className="text-4xl text-center mt-10">
+            Logged-in user role: {session?.user?.role}
+          </h1>
           <Image
             src={
               session?.user?.image ||
