@@ -4,11 +4,9 @@ import Image from "next/image";
 
 const DashboardPage = async () => {
   const session = await getServerSession(authOptions);
-  const user = localStorage.getItem("role");
-  console.log(session, user);
   return (
     <div>
-      {(session?.user || user) && (
+      {session?.user && (
         <>
           <h1 className="text-4xl text-center mt-10">
             Welcome {session?.user?.name}
