@@ -1,13 +1,14 @@
-"use client";
-import { useSession } from "next-auth/react";
+import { authOptions } from "@/utils/authOptions";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 
-const Dashboard = () => {
-  const { data: session } = useSession();
-
+const DashboardPage = async () => {
+  const session = await getServerSession(authOptions);
+  const user = localStorage.getItem("role");
+  console.log(session, user);
   return (
     <div>
-      {session?.user && (
+      {(session?.user || user) && (
         <>
           <h1 className="text-4xl text-center mt-10">
             Welcome {session?.user?.name}
@@ -31,4 +32,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

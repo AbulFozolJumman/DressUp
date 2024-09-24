@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { FaShoppingCart } from "react-icons/fa";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"; // Icons for Hamburger and Close button
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Image from "next/image";
 import Logo from "@/asset/DressUp.png";
 
@@ -18,7 +18,7 @@ type UserProps = {
 };
 
 const Navbar = ({ session }: { session: UserProps | null }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for controlling the mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="bg-white shadow-md w-full z-10">

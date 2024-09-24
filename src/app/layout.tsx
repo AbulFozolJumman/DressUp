@@ -7,7 +7,7 @@ import { authOptions } from "@/utils/authOptions";
 
 export const metadata: Metadata = {
   title: "Dress Up",
-  description: "Youth & Young Clothing Store",
+  description: "Young & Youth Clothing Store",
 };
 
 export default async function RootLayout({

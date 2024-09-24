@@ -1,5 +1,6 @@
 "use client";
 
+import { loginUser } from "@/utils/actions/loginUser";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,16 +17,19 @@ const LoginPage = () => {
   const router = useRouter();
 
   const onSubmit = async (data: FormValues) => {
-    const res = await signIn("credentials", {
-      redirect: false,
-      email: data.email,
-      password: data.password,
-    });
-
-    if (res?.ok) {
-      router.push("/dashboard"); // Redirect to dashboard on successful login
-    } else {
-      alert("Invalid email or password");
+    try {
+      const res = await loginUser(data);
+      if (res.accessToken) {
+        console.log(res);
+        alert(res.message);
+        localStorage.setItem("accessToken", res.accessToken);
+        localStorage.setItem("role", res.user.role);
+        router.push("/");
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      console.error(err.message);
+      throw new Error(err.message);
     }
   };
 
