@@ -1,25 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { FaShoppingCart } from "react-icons/fa";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Image from "next/image";
 import Logo from "@/asset/DressUp.png";
+import useUserInfo from "@/hooks/useUserInfo";
+import { useRouter } from "next/navigation";
+import { logoutUser } from "@/utils/logoutUser";
 
-type UserProps = {
-  user?: {
-    name?: string | null | undefined;
-    email?: string | null | undefined;
-    image?: string | null | undefined;
-  };
-};
-
-const Navbar = ({ session }: { session: UserProps | null }) => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const userInfo = useUserInfo();
+  const router = useRouter();
+  const handleLogOut = () => {
+    logoutUser(router);
+  };
   return (
     <nav className="bg-white shadow-md w-full z-10">
       <div className="container mx-auto px-4 md:py-4 py-1 flex justify-between items-center">
@@ -63,9 +61,9 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
           </button>
 
           {/* Login/Logout */}
-          {session?.user ? (
+          {userInfo.role ? (
             <button
-              onClick={() => signOut()}
+              onClick={handleLogOut}
               className="flex items-center space-x-2 hover:text-gray-600"
             >
               <FiLogOut className="text-2xl" />

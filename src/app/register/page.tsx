@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { registerUser } from "@/utils/actions/registerUser";
 import { useRouter } from "next/navigation";
+import { setToLocalStorage } from "@/utils/localStorageManager";
 
 export type UserData = {
   username: string;
@@ -22,9 +23,9 @@ const RegisterPage = () => {
       if (res.accessToken) {
         console.log(res);
         alert(res.message);
-        localStorage.setItem("accessToken", res.accessToken);
-        localStorage.setItem("role", res.user.role);
+        setToLocalStorage("accessToken", res.accessToken);
         router.push("/");
+        router.refresh();
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
