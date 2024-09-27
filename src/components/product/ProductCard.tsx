@@ -1,24 +1,7 @@
-// components/ProductCard.tsx
-
-import React from "react";
+import { IProduct } from "@/types";
 import Link from "next/link";
 
-type Product = {
-  _id: string;
-  image: string;
-  title: string;
-  price: number;
-  ratings: number;
-  category: string;
-  description: string;
-};
-
-interface ProductCardProps {
-  product: Product;
-  addToCart: (productId: string) => void;
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({ product, addToCart }) => {
+const ProductCard = ({ product }: { product: IProduct }) => {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
       {/* <img
@@ -40,10 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, addToCart }) => {
               See Details
             </button>
           </Link>
-          <button
-            onClick={() => addToCart(product._id)}
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-          >
+          <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
             Add to Cart
           </button>
         </div>
