@@ -1,11 +1,9 @@
-"use client";
-
-import { useGetProductsQuery } from "@/redux/api/baseApi";
-
 const AboutPage = () => {
-  const { data } = useGetProductsQuery("");
-  console.log(data);
-  return <div>About{data?.products.length}</div>;
+  return (
+    <div>
+      <h2 className="text-4xl">About</h2>
+    </div>
+  );
 };
 
 export default AboutPage;

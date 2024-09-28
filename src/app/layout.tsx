@@ -19,7 +19,7 @@ export default async function RootLayout({
       <html lang="en" data-theme="light">
         <body>
           <Navbar />
-          <div className="min-h-screen w-[90%] mx-auto">{children}</div>
+          <div className="min-h-screen container px-4 mx-auto">{children}</div>
         </body>
       </html>
     </Providers>

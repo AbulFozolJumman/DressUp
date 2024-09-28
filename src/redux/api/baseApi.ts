@@ -8,7 +8,15 @@ export const baseApi = createApi({
   }),
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: () => "/products",
+      // Accepting query params for pagination, category filtering, and sorting
+      query: ({ page = 1, category = "", sort = "asc" }) => {
+        const queryParams = new URLSearchParams({
+          page: page.toString(),
+          category,
+          sort,
+        });
+        return `/products?${queryParams}`;
+      },
     }),
   }),
 });
