@@ -6,7 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Image from "next/image";
-import Logo from "@/asset/DressUp.png";
+import Logo from "@/assets/DressUp.png";
 import useUserInfo from "@/hooks/useUserInfo";
 import { useRouter } from "next/navigation";
 import { logoutUser } from "@/utils/logoutUser";
@@ -39,7 +39,7 @@ const Navbar = () => {
           <Link href="/" className="hover:text-gray-600">
             Home
           </Link>
-          <Link href="/product" className="hover:text-gray-600">
+          <Link href="/products" className="hover:text-gray-600">
             Products
           </Link>
           <Link href="/about" className="hover:text-gray-600">
@@ -95,7 +95,7 @@ const Navbar = () => {
           <Link href="/" className="block text-lg hover:text-gray-600">
             Home
           </Link>
-          <Link href="/products" className="block text-lg hover:text-gray-600">
+          <Link href="/productss" className="block text-lg hover:text-gray-600">
             Products
           </Link>
           <Link href="/about" className="block text-lg hover:text-gray-600">

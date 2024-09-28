@@ -1,14 +1,18 @@
 import { IProduct } from "@/types";
+import Image from "next/image";
 import Link from "next/link";
+import dressImage from "../../assets/Cute Kids Dress.png";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
-      {/* <img
+      <Image
         className="w-full h-48 object-cover"
-        src={product.image}
+        height={350}
+        width={400}
+        src={dressImage}
         alt={product.title}
-      /> */}
+      />
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
         <p className="text-gray-500 text-sm mb-4">{product.category}</p>
