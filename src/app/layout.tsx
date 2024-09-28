@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
+import Providers from "@/lib/Providers";
 
 export const metadata: Metadata = {
   title: "Dress Up",
@@ -14,11 +15,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body>
-        <Navbar />
-        <div className="min-h-screen w-[90%] mx-auto">{children}</div>
-      </body>
-    </html>
+    <Providers>
+      <html lang="en" data-theme="light">
+        <body>
+          <Navbar />
+          <div className="min-h-screen w-[90%] mx-auto">{children}</div>
+        </body>
+      </html>
+    </Providers>
   );
 }

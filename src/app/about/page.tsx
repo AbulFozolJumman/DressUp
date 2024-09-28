@@ -1,7 +1,11 @@
-import React from "react";
+"use client";
+
+import { useGetProductsQuery } from "@/redux/api/baseApi";
 
 const AboutPage = () => {
-  return <div>About</div>;
+  const { data } = useGetProductsQuery("");
+  console.log(data);
+  return <div>About{data?.products.length}</div>;
 };
 
 export default AboutPage;
