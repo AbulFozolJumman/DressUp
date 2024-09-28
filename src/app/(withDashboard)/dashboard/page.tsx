@@ -1,4 +1,5 @@
 "use client";
+import CreateProduct from "@/components/product/CreateProduct";
 import useUserInfo from "@/hooks/useUserInfo";
 import Image from "next/image";
 
@@ -27,6 +28,7 @@ const DashboardPage = () => {
             alt="user image"
             className="mx-auto rounded-full mt-5"
           />
+          <CreateProduct />
         </>
       ) : (
         <h1 className="text-3xl">Please Login first to see Dashboard</h1>

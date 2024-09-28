@@ -16,7 +16,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
         <p className="text-gray-500 text-sm mb-4">{product.category}</p>
-        <p className="text-lg font-bold mb-2">${product.price.toFixed(2)}</p>
+        <p className="text-lg font-bold mb-2">${product.price}</p>
         <div className="flex items-center mb-4">
           <span className="text-yellow-500 mr-2">★</span>
           <span>{product.ratings} / 5</span>
