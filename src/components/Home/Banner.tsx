@@ -41,6 +41,7 @@ const Banner = () => {
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(intervalId); // Cleanup on component unmount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, products.length]); // Depend on currentIndex and products length
 
   // Handle next and previous buttons
@@ -64,7 +65,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="bg-gray-700 text-white py-10 relative">
+    <div className="bg-red-900 text-white py-10 relative">
       <div className="text-center mb-10 px-4">
         <h1 className="text-2xl md:text-4xl font-bold">
           Explore Fashion that Defines You

@@ -1,15 +1,30 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { cartSlice } from "./slices/cartSlice";
 import { baseApi } from "./api/baseApi";
+
+// Persist config for the cart slice
+const persistConfig = {
+  key: "cart", // Only persist the cart slice
+  storage,
+};
+
+const persistedCartReducer = persistReducer(persistConfig, cartSlice.reducer);
 
 export const store = configureStore({
   reducer: {
-    [baseApi.reducerPath]: baseApi.reducer,
+    cart: persistedCartReducer, // Persisted cart reducer
+    [baseApi.reducerPath]: baseApi.reducer, // Base API reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(baseApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(baseApi.middleware), // Add baseApi middleware
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+export const persistor = persistStore(store);
+
+// Infer types for RootState and AppDispatch
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

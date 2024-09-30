@@ -10,8 +10,12 @@ import Logo from "@/assets/DressUp.png";
 import useUserInfo from "@/hooks/useUserInfo";
 import { useRouter } from "next/navigation";
 import { logoutUser } from "@/utils/logoutUser";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const Navbar = () => {
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userInfo = useUserInfo();
   const router = useRouter();
@@ -53,12 +57,16 @@ const Navbar = () => {
         {/* Right - Shopping Cart and Login/Logout */}
         <div className="flex items-center space-x-6">
           {/* Shopping Cart */}
-          <button className="relative">
-            <FaShoppingCart className="text-2xl hover:text-gray-600" />
-            <span className="absolute bottom-4 left-4 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-              0
-            </span>
-          </button>
+          <Link href="/dashboard">
+            <button className="relative">
+              <FaShoppingCart className="text-2xl hover:text-gray-600" />
+              {cartCount > 0 && (
+                <span className="absolute bottom-4 left-4 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+          </Link>
 
           {/* Login/Logout */}
           {userInfo.role ? (
@@ -95,7 +103,7 @@ const Navbar = () => {
           <Link href="/" className="block text-lg hover:text-gray-600">
             Home
           </Link>
-          <Link href="/productss" className="block text-lg hover:text-gray-600">
+          <Link href="/products" className="block text-lg hover:text-gray-600">
             Products
           </Link>
           <Link href="/about" className="block text-lg hover:text-gray-600">

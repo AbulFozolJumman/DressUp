@@ -2,8 +2,23 @@ import { IProduct } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import dressImage from "../../assets/Cute Kids Dress.png";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/slices/cartSlice";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        id: product._id,
+        title: product.title,
+        price: product.price,
+        quantity: 1,
+      })
+    );
+    alert("Add to Cart Successful!");
+  };
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
       <Image
@@ -27,7 +42,10 @@ const ProductCard = ({ product }: { product: IProduct }) => {
               See Details
             </button>
           </Link>
-          <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+          <button
+            onClick={handleAddToCart}
+            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          >
             Add to Cart
           </button>
         </div>

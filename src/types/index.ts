@@ -15,3 +15,14 @@ export type ICreateProduct = {
   category: string;
   description: string;
 };
+
+export type ICartItem = {
+  id: string;
+  title: string;
+  price: number;
+  quantity: number;
+};
+
+export type ICartState = {
+  items: ICartItem[];
+};
