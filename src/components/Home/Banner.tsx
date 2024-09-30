@@ -65,7 +65,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="bg-red-900 text-white py-10 relative">
+    <div className="bg-cyan-900 text-white py-10 relative">
       <div className="text-center mb-10 px-4">
         <h1 className="text-2xl md:text-4xl font-bold">
           Explore Fashion that Defines You

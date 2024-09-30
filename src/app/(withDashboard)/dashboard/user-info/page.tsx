@@ -1,5 +1,3 @@
-"use client";
-
 import Cart from "@/components/dashboard/Cart";
 
 const UserInfoPage = () => {
