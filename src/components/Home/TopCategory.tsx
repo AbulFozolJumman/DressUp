@@ -1,47 +1,58 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { IProduct } from "@/types";
-
 const TopCategories = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/products`
-      );
-      const data = await res.json();
-      setProducts(data.products);
-    };
-
-    fetchData();
-  }, []);
-
   return (
-    <section className="mt-10">
-      <h2 className="text-3xl font-bold text-center mb-8">Top Categories</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {products?.map((product: IProduct) => (
-          <div key={product._id} className="bg-gray-100 rounded-lg p-4">
-            <Image
-              src={product.image}
-              alt={product.title}
-              width={300}
-              height={200}
-              className="object-cover rounded-lg"
-            />
-            <h3 className="text-lg font-medium text-center mt-2">
-              {product.title}
-            </h3>
+    <>
+      <div className="max-w-7xl mx-auto py-10">
+        <h2 className="text-4xl font-bold mb-8">Top Categories</h2>
+        <div className="-m-1 flex flex-wrap flex-col md:flex-row md:-m-2">
+          <div className="flex w-full md:w-1/2 flex-wrap">
+            <div className="w-1/2 p-1 md:p-2">
+              <img
+                alt="gallery"
+                className="block h-full w-full rounded-lg object-cover object-center shadow-md"
+                src="https://i.ibb.co.com/DkGqLbw/Cute-Kids-Dress2.png"
+              />
+            </div>
+            <div className="w-1/2 p-1 md:p-2">
+              <img
+                alt="gallery"
+                className="block h-full w-full rounded-lg object-cover object-center shadow-md"
+                src="https://i.ibb.co.com/dMrKxfG/a6159d20cfcd2d293b6602832170ef29-jpg-720x720q80-jpg.webp"
+              />
+            </div>
+            <div className="w-full p-1 md:p-2">
+              <img
+                alt="gallery"
+                className="block h-full w-full rounded-lg object-cover object-center shadow-md"
+                src="https://i.ibb.co.com/q7hRxbk/ff7c01fef28934ed8036b73c32bdc124-jpg-720x720q80-jpg.webp"
+              />
+            </div>
           </div>
-        ))}
+          <div className="flex w-full md:w-1/2 flex-wrap">
+            <div className="w-full p-1 md:p-2">
+              <img
+                alt="gallery"
+                className="block h-full w-full rounded-lg object-cover object-center shadow-md"
+                src="https://i.ibb.co.com/PckprZv/3208ac133931ce137c5b611bd37eee9f-jpg-720x720q80-jpg.webp"
+              />
+            </div>
+            <div className="w-1/2 p-1 md:p-2">
+              <img
+                alt="gallery"
+                className="block h-full w-full rounded-lg object-cover object-center shadow-md"
+                src="https://i.ibb.co.com/K9x6c80/2e3ab5ceccd101988eb5515eddeb2956-jpg-720x720q80-jpg.webp"
+              />
+            </div>
+            <div className="w-1/2 p-1 md:p-2">
+              <img
+                alt="gallery"
+                className="block h-full w-full rounded-lg object-cover object-center shadow-md"
+                src="https://i.ibb.co.com/XJv17nJ/c8014e661b16fa2b3c597e48276996fd-jpg-720x720q80-jpg.webp"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="text-center mt-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
-          View All
-        </button>
-      </div>
-    </section>
+    </>
   );
 };
 

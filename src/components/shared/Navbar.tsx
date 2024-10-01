@@ -23,7 +23,7 @@ const Navbar = () => {
     logoutUser(router);
   };
   return (
-    <nav className="bg-white shadow-md w-full z-10">
+    <nav className="bg-cyan-100 shadow-md w-full z-10">
       <div className="container mx-auto px-4 md:py-4 py-1 flex justify-between items-center">
         {/* Left - Logo */}
         <div className="text-2xl font-bold cursor-pointer w-14 h-14">

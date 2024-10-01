@@ -1,8 +1,8 @@
 "use client";
 
 import Banner from "@/components/Home/Banner";
-import Brands from "@/components/Home/Brands";
 import FlashSale from "@/components/Home/FlashSale";
+import DownloadApp from "@/components/Home/MobileApp";
 import TopCategories from "@/components/Home/TopCategory";
 
 const HomePage = () => {
@@ -11,7 +11,8 @@ const HomePage = () => {
       <Banner />
       <FlashSale />
       <TopCategories />
-      <Brands />
+      {/* <Brands /> */}
+      <DownloadApp />
     </>
   );
 };

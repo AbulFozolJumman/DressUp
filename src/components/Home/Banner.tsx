@@ -104,9 +104,9 @@ const Banner = () => {
                 <h2 className="text-sm md:text-lg font-semibold mt-2 md:mt-4 whitespace-nowrap overflow-hidden">
                   {product.title}
                 </h2>
-                <p className="text-xs md:text-lg text-gray-500 line-through">
+                {/* <p className="text-xs md:text-lg text-gray-500 line-through">
                   ${(product.price + 50).toFixed(2)}
-                </p>
+                </p> */}
                 <p className="text-sm md:text-xl text-gray-900 font-bold">
                   ${product.price.toFixed(2)}
                 </p>

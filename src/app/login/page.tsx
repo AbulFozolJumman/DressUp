@@ -24,7 +24,7 @@ const LoginPage = () => {
         console.log(res);
         alert(res.message);
         setToLocalStorage("accessToken", res.accessToken);
-        router.push("/");
+        router.push("/dashboard");
         router.refresh();
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
