@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import defaultImage from "@/assets/Cute Kids Dress.png";
 import Image from "next/image";
 
 const Banner = () => {
@@ -95,7 +94,7 @@ const Banner = () => {
                   <Image
                     height={200}
                     width={200}
-                    src={defaultImage || product.image}
+                    src={product.image}
                     alt={product.title}
                     className="rounded-lg shadow-lg h-32 w-full object-cover md:h-40"
                   />

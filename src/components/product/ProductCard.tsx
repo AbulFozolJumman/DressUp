@@ -1,7 +1,6 @@
 import { IProduct } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import dressImage from "../../assets/Cute Kids Dress.png";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slices/cartSlice";
 
@@ -25,7 +24,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         className="w-full h-48 object-cover"
         height={350}
         width={400}
-        src={dressImage}
+        src={product.image}
         alt={product.title}
       />
       <div className="p-4">

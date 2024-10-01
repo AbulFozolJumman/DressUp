@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import defaultImage from "@/assets/Cute Kids Dress.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -64,7 +63,7 @@ const FlashSale = () => {
                 <Image
                   height={300}
                   width={300}
-                  src={defaultImage || product.image}
+                  src={product.image}
                   alt={product.title}
                   className="rounded-lg shadow-lg h-40 w-full object-cover"
                 />
