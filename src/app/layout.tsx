@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Providers from "@/lib/Providers";
+import ProvidersOfPersistGate from "@/Providers/ProvidersOfPersistGate";
+import Footer from "@/components/shared/Footer";
 
 export const metadata: Metadata = {
   title: "Dress Up",
@@ -18,8 +20,13 @@ export default async function RootLayout({
     <Providers>
       <html lang="en" data-theme="light">
         <body>
-          <Navbar />
-          <div className="min-h-screen container px-4 mx-auto">{children}</div>
+          <ProvidersOfPersistGate>
+            <Navbar />
+            <div className="min-h-screen container px-4 mx-auto">
+              {children}
+            </div>
+            <Footer />
+          </ProvidersOfPersistGate>
         </body>
       </html>
     </Providers>
