@@ -24,17 +24,11 @@ const Navbar = () => {
   };
   return (
     <nav className="bg-[#00BADE] border-b border-cyan-600 w-full z-10">
-      <div className="container mx-auto px-4 md:py-4 py-1 flex justify-between items-center">
+      <div className="container mx-auto px-4 md:py-1 py-1 flex justify-between items-center">
         {/* Left - Logo */}
-        <div className="text-2xl font-bold cursor-pointer w-14 h-14">
+        <div className="cursor-pointer md:w-20 w-16 md:h-20 h-16">
           <Link href="/">
-            <Image
-              src={Logo}
-              width={100}
-              height={100}
-              alt="dressUp Logo"
-              // className="rounded-full"
-            />
+            <Image src={Logo} width={200} height={200} alt="dressUp Logo" />
           </Link>
         </div>
 
@@ -55,7 +49,7 @@ const Navbar = () => {
         </div>
 
         {/* Right - Shopping Cart and Login/Logout */}
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center md:space-x-6 space-x-5">
           {/* Shopping Cart */}
           <Link href="/dashboard/user-info">
             <button className="relative">
@@ -90,7 +84,7 @@ const Navbar = () => {
           {/* Hamburger Menu Button for Mobile */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-2xl focus:outline-none"
+            className="md:hidden text-white text-3xl focus:outline-none"
           >
             {isMenuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
           </button>

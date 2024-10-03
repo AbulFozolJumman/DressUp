@@ -1,32 +1,37 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/assets/DressUp.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-cyan-900 text-white py-10">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+    <footer className="bg-[#00BADE] text-white py-10 border-t border-cyan-600">
+      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo & Tagline */}
         <div className="flex flex-col items-center md:items-start">
-          <Link href="/">
-            <button className="text-2xl font-bold mb-2">DressUp</button>
-          </Link>
-          <p className="text-gray-400">Young & Youth Clothing Store</p>
+          <div className="cursor-pointer w-20 h-20">
+            <Link href="/">
+              <Image src={Logo} width={200} height={200} alt="dressUp Logo" />
+            </Link>
+          </div>
+          <h2 className="text-2xl font-bold mb-2">DressUp</h2>
+          <p className="text-white">Young & Youth Clothing Store</p>
         </div>
 
         {/* Navigation Links */}
         <div className="flex flex-col items-center space-y-4">
           <h3 className="font-semibold text-xl">Quick Links</h3>
           <Link href="/">
-            <button className="text-gray-400 hover:text-white">Home</button>
+            <button className="text-white hover:text-gray-600">Home</button>
           </Link>
           <Link href="/products">
-            <button className="text-gray-400 hover:text-white">Products</button>
+            <button className="text-white hover:text-gray-600">Products</button>
           </Link>
           <Link href="/about-us">
-            <button className="text-gray-400 hover:text-white">About Us</button>
+            <button className="text-white hover:text-gray-600">About Us</button>
           </Link>
           <Link href="/dashboard">
-            <button className="text-gray-400 hover:text-white">
+            <button className="text-white hover:text-gray-600">
               Dashboard
             </button>
           </Link>
@@ -49,7 +54,7 @@ const Footer = () => {
               <FaGithub className="text-2xl hover:text-gray-400" />
             </Link>
           </div>
-          <p className="text-gray-400">
+          <p className="text-white text-right">
             Contact: support@dress-up.com
             <br />
             +1 234 567 890
@@ -58,7 +63,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom footer - copyright */}
-      <div className="text-center text-gray-400 text-sm mt-8 border-t border-gray-700 pt-4">
+      <div className="text-center text-white text-sm mt-8 border-t border-cyan-600 pt-4">
         &copy; {new Date().getFullYear()} DressUp. All rights reserved.
       </div>
     </footer>

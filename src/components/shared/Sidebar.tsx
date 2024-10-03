@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <div className="bg-gray-100 min-h-screen h-full p-4">
+    <div className="bg-[#00BADE] min-h-screen h-full p-4 pl-0">
       <ul className="space-y-4">
         <li>
           <Link

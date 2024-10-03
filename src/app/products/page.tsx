@@ -41,7 +41,7 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className="w-full my-10">
+    <div className="w-full my-10 container mx-auto px-4">
       <h1 className="text-3xl font-bold mb-8">Our Products</h1>
 
       {/* Filters and Sorting */}
