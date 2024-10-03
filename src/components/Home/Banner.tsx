@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import DImage from "@/assets/Cute Kids Dress.png";
 
 const Banner = () => {
   const [products, setProducts] = useState<
@@ -64,7 +65,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="bg-cyan-900 text-white py-10 relative">
+    <div className="bg-[#00BADE] text-white py-10 relative">
       <div className="text-center mb-10 px-4">
         <h1 className="text-2xl md:text-4xl font-bold">
           Explore Fashion that Defines You
@@ -94,7 +95,7 @@ const Banner = () => {
                   <Image
                     height={200}
                     width={200}
-                    src={product.image}
+                    src={DImage || product.image}
                     alt={product.title}
                     className="rounded-lg shadow-lg h-32 w-full object-cover md:h-40"
                   />

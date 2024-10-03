@@ -23,7 +23,7 @@ const Navbar = () => {
     logoutUser(router);
   };
   return (
-    <nav className="bg-cyan-100 shadow-md w-full z-10">
+    <nav className="bg-[#00BADE] border-b border-cyan-600 w-full z-10">
       <div className="container mx-auto px-4 md:py-4 py-1 flex justify-between items-center">
         {/* Left - Logo */}
         <div className="text-2xl font-bold cursor-pointer w-14 h-14">
@@ -40,16 +40,16 @@ const Navbar = () => {
 
         {/* Middle - Navigation Links (Hidden on Mobile) */}
         <div className="hidden md:flex space-x-6 text-lg">
-          <Link href="/" className="hover:text-gray-600">
+          <Link href="/" className="hover:text-gray-600 text-white">
             Home
           </Link>
-          <Link href="/products" className="hover:text-gray-600">
+          <Link href="/products" className="hover:text-gray-600 text-white">
             Products
           </Link>
-          <Link href="/about" className="hover:text-gray-600">
+          <Link href="/about" className="hover:text-gray-600 text-white">
             About Us
           </Link>
-          <Link href="/dashboard" className="hover:text-gray-600">
+          <Link href="/dashboard" className="hover:text-gray-600 text-white">
             Dashboard
           </Link>
         </div>
@@ -59,7 +59,7 @@ const Navbar = () => {
           {/* Shopping Cart */}
           <Link href="/dashboard/user-info">
             <button className="relative">
-              <FaShoppingCart className="text-2xl hover:text-gray-600" />
+              <FaShoppingCart className="text-2xl hover:text-gray-600 text-white" />
               {cartCount > 0 && (
                 <span className="absolute bottom-4 left-4 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
                   {cartCount}
@@ -72,7 +72,7 @@ const Navbar = () => {
           {userInfo.role ? (
             <button
               onClick={handleLogOut}
-              className="flex items-center space-x-2 hover:text-gray-600"
+              className="flex items-center space-x-2 hover:text-gray-600 text-white"
             >
               <FiLogOut className="text-2xl" />
               <span>Logout</span>
@@ -80,7 +80,7 @@ const Navbar = () => {
           ) : (
             <Link
               href="/login"
-              className="flex items-center space-x-2 hover:text-gray-600"
+              className="flex items-center space-x-2 hover:text-gray-600 text-white"
             >
               <FiLogIn className="text-2xl" />
               <span>Login</span>
@@ -100,16 +100,28 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden flex flex-col space-y-2 px-4 py-2">
-          <Link href="/" className="block text-lg hover:text-gray-600">
+          <Link
+            href="/"
+            className="block text-lg hover:text-gray-600 text-white"
+          >
             Home
           </Link>
-          <Link href="/products" className="block text-lg hover:text-gray-600">
+          <Link
+            href="/products"
+            className="block text-lg hover:text-gray-600 text-white"
+          >
             Products
           </Link>
-          <Link href="/about" className="block text-lg hover:text-gray-600">
+          <Link
+            href="/about"
+            className="block text-lg hover:text-gray-600 text-white"
+          >
             About Us
           </Link>
-          <Link href="/dashboard" className="block text-lg hover:text-gray-600">
+          <Link
+            href="/dashboard"
+            className="block text-lg hover:text-gray-600 text-white"
+          >
             Dashboard
           </Link>
         </div>

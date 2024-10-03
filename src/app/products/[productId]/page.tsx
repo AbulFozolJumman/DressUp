@@ -1,5 +1,6 @@
 import { IProduct } from "@/types";
 import Image from "next/image";
+import DImage from "@/assets/Cute Kids Dress.png";
 
 interface IProductId {
   params: {
@@ -31,7 +32,7 @@ const ProductDetails = async ({ params }: IProductId) => {
           className="w-full h-96 object-cover"
           height={350}
           width={400}
-          src={data.product.image}
+          src={DImage || data.product.image}
           alt={data.product.title}
         />
         <div className="p-8">

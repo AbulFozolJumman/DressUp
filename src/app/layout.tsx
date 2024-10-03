@@ -22,9 +22,7 @@ export default async function RootLayout({
         <body>
           <ProvidersOfPersistGate>
             <Navbar />
-            <div className="min-h-screen container px-4 mx-auto">
-              {children}
-            </div>
+            <div className="min-h-screen">{children}</div>
             <Footer />
           </ProvidersOfPersistGate>
         </body>
