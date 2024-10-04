@@ -34,16 +34,16 @@ const Navbar = () => {
 
         {/* Middle - Navigation Links (Hidden on Mobile) */}
         <div className="hidden md:flex space-x-6 text-lg">
-          <Link href="/" className="hover:text-gray-600 text-white">
+          <Link href="/" className="hover:text-blue-600 text-white">
             Home
           </Link>
-          <Link href="/products" className="hover:text-gray-600 text-white">
+          <Link href="/products" className="hover:text-blue-600 text-white">
             Products
           </Link>
-          <Link href="/about" className="hover:text-gray-600 text-white">
+          <Link href="/about" className="hover:text-blue-600 text-white">
             About Us
           </Link>
-          <Link href="/dashboard" className="hover:text-gray-600 text-white">
+          <Link href="/dashboard" className="hover:text-blue-600 text-white">
             Dashboard
           </Link>
         </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
           {/* Shopping Cart */}
           <Link href="/dashboard/user-info">
             <button className="relative">
-              <FaShoppingCart className="text-2xl hover:text-gray-600 text-white" />
+              <FaShoppingCart className="text-2xl hover:text-blue-600 bg-[#093045] text-white" />
               {cartCount > 0 && (
                 <span className="absolute bottom-4 left-4 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
                   {cartCount}
@@ -66,17 +66,17 @@ const Navbar = () => {
           {userInfo.role ? (
             <button
               onClick={handleLogOut}
-              className="flex items-center space-x-2 hover:text-gray-600 text-white"
+              className="flex items-center space-x-2 text-white hover:text-blue-600"
             >
-              <FiLogOut className="text-2xl" />
+              <FiLogOut className="text-2xl bg-[#093045]" />
               <span>Logout</span>
             </button>
           ) : (
             <Link
               href="/login"
-              className="flex items-center space-x-2 hover:text-gray-600 text-white"
+              className="flex items-center space-x-2 hover:text-blue-600 text-white"
             >
-              <FiLogIn className="text-2xl" />
+              <FiLogIn className="text-2xl bg-[#093045]" />
               <span>Login</span>
             </Link>
           )}
@@ -84,7 +84,7 @@ const Navbar = () => {
           {/* Hamburger Menu Button for Mobile */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white text-3xl focus:outline-none"
+            className="md:hidden text-white bg-[#093045] text-3xl focus:outline-none"
           >
             {isMenuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
           </button>
@@ -93,28 +93,28 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden flex flex-col space-y-2 px-4 py-2">
+        <div className="md:hidden flex flex-col space-y-3 px-5 pt-2 pb-5">
           <Link
             href="/"
-            className="block text-lg hover:text-gray-600 text-white"
+            className="block text-lg hover:text-blue-600 text-white"
           >
             Home
           </Link>
           <Link
             href="/products"
-            className="block text-lg hover:text-gray-600 text-white"
+            className="block text-lg hover:text-blue-600 text-white"
           >
             Products
           </Link>
           <Link
             href="/about"
-            className="block text-lg hover:text-gray-600 text-white"
+            className="block text-lg hover:text-blue-600 text-white"
           >
             About Us
           </Link>
           <Link
             href="/dashboard"
-            className="block text-lg hover:text-gray-600 text-white"
+            className="block text-lg hover:text-blue-600 text-white"
           >
             Dashboard
           </Link>

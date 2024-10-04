@@ -22,16 +22,16 @@ const Footer = () => {
         <div className="flex flex-col items-center space-y-4">
           <h3 className="font-semibold text-xl">Quick Links</h3>
           <Link href="/">
-            <button className="text-white hover:text-gray-600">Home</button>
+            <button className="text-white hover:text-blue-600">Home</button>
           </Link>
           <Link href="/products">
-            <button className="text-white hover:text-gray-600">Products</button>
+            <button className="text-white hover:text-blue-600">Products</button>
           </Link>
           <Link href="/about-us">
-            <button className="text-white hover:text-gray-600">About Us</button>
+            <button className="text-white hover:text-blue-600">About Us</button>
           </Link>
           <Link href="/dashboard">
-            <button className="text-white hover:text-gray-600">
+            <button className="text-white hover:text-blue-600">
               Dashboard
             </button>
           </Link>
@@ -42,16 +42,16 @@ const Footer = () => {
           <h3 className="font-semibold text-xl">Follow Us</h3>
           <div className="flex space-x-4">
             <Link href="https://facebook.com" target="_blank" rel="noreferrer">
-              <FaFacebook className="text-2xl hover:text-blue-500" />
+              <FaFacebook className="text-2xl hover:text-blue-500 bg-[#093045]" />
             </Link>
             <Link href="https://instagram.com" target="_blank" rel="noreferrer">
-              <FaInstagram className="text-2xl hover:text-pink-500" />
+              <FaInstagram className="text-2xl hover:text-pink-500 bg-[#093045]" />
             </Link>
             <Link href="https://twitter.com" target="_blank" rel="noreferrer">
-              <FaTwitter className="text-2xl hover:text-blue-400" />
+              <FaTwitter className="text-2xl hover:text-blue-400 bg-[#093045]" />
             </Link>
             <Link href="https://github.com" target="_blank" rel="noreferrer">
-              <FaGithub className="text-2xl hover:text-gray-400" />
+              <FaGithub className="text-2xl hover:text-gray-400 bg-[#093045]" />
             </Link>
           </div>
           <p className="text-white text-right">

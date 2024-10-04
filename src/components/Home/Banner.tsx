@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import DImage from "@/assets/Cute_Kids_Dress2-removebg-preview.png";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import ProductLoadingCard from "../product/ProductLoadingCard";
+import ProductCard from "../product/ProductCard";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 const Banner = () => {
   const [products, setProducts] = useState<
@@ -17,6 +19,7 @@ const Banner = () => {
     }[]
   >([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { width } = useWindowSize();
 
   // Fetch products from API
   useEffect(() => {
@@ -42,23 +45,37 @@ const Banner = () => {
 
     return () => clearInterval(intervalId); // Cleanup on component unmount
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex, products.length]); // Depend on currentIndex and products length
+  }, [currentIndex, products.length]);
+
+  // Get visible product count based on screen size
+  const getVisibleProductCount = () => {
+    if (width < 765) return 1; // Mobile: 1 card
+    if (width < 1023) return 2; // Tablet: 2 cards
+    if (width < 1439) return 3; // Laptop: 3 cards
+    return 4; // Larger screens: 4 cards
+  };
 
   // Handle next and previous buttons
   const handlePrev = () => {
+    const visibleCount = getVisibleProductCount();
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 3 + products.length) % products.length
+      (prevIndex) =>
+        (prevIndex - visibleCount + products.length) % products.length
     );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 3) % products.length);
+    const visibleCount = getVisibleProductCount();
+    setCurrentIndex(
+      (prevIndex) => (prevIndex + visibleCount) % products.length
+    );
   };
 
-  // Get three products to display
+  // Get the visible products to display
   const getVisibleProducts = () => {
+    const visibleCount = getVisibleProductCount();
     const visibleProducts = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < visibleCount; i++) {
       visibleProducts.push(products[(currentIndex + i) % products.length]);
     }
     return visibleProducts;
@@ -82,42 +99,14 @@ const Banner = () => {
           onClick={handlePrev}
           className="text-[#093045] font-bold text-4xl pr-5"
         >
-          &lt;
+          <FaArrowAltCircleLeft />
         </button>
 
-        {/* Show 3 products */}
+        {/* Show visible products */}
         <div className="flex justify-between items-center gap-5">
-          {getVisibleProducts().map((product) => {
-            if (!product) return null; // Guard clause for undefined product
-            return (
-              <div
-                key={product._id}
-                className="w-72 bg-white border border-gray-200 rounded-lg shadow-md"
-              >
-                {product.image ? (
-                  <Image
-                    height={200}
-                    width={200}
-                    src={DImage || product.image}
-                    alt={product.title}
-                    className="h-72 w-72"
-                  />
-                ) : (
-                  <div className="h-72 w-72 bg-gray-300" />
-                )}
-                <div className="p-5">
-                  <h2 className="text-xl font-semibold mb-2 whitespace-nowrap overflow-hidden">
-                    {product.title}
-                  </h2>
-                  {/* <p className="text-xs md:text-lg text-gray-500 line-through">
-                  ${(product.price + 50).toFixed(2)}
-                </p> */}
-                  <p className="text-sm md:text-xl text-gray-900 font-bold">
-                    ${product.price.toFixed(2)}
-                  </p>
-                </div>
-              </div>
-            );
+          {getVisibleProducts().map((product, index) => {
+            if (!product) return <ProductLoadingCard key={index} />;
+            return <ProductCard key={product._id} product={product} />;
           })}
         </div>
 
@@ -125,7 +114,7 @@ const Banner = () => {
           onClick={handleNext}
           className="text-[#093045] font-bold text-4xl pl-5"
         >
-          &gt;
+          <FaArrowAltCircleRight />
         </button>
       </div>
     </div>
