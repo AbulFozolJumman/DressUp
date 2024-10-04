@@ -12,9 +12,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen bg-[#093045]">
+    <div className="min-h-screen bg-white">
       <div className="flex justify-between container mx-auto px-5">
-        <div className="w-[20%]">
+        <div className="w-[20%] border-r border-e-4 border-[#093045]">
           <Sidebar />
         </div>
         <div className="w-[80%] bg-base-200 rounded-box ml-2 bg-white">

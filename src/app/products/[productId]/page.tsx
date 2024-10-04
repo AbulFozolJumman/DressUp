@@ -1,6 +1,7 @@
 import { IProduct } from "@/types";
 import Image from "next/image";
 import DImage from "@/assets/Cute Kids Dress.png";
+import AddToCart from "@/components/shared/addToCart";
 
 interface IProductId {
   params: {
@@ -46,9 +47,10 @@ const ProductDetails = async ({ params }: IProductId) => {
             <span>{data.product.ratings} / 5</span>
           </div>
           <p className="text-gray-700 text-sm">{data.product.description}</p>
-          <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+          {/* <button className="mt-4 px-4 py-2 bg-[#093045] text-white rounded hover:bg-blue-700">
             Add to Cart
-          </button>
+          </button> */}
+          <AddToCart product={data.product} />
         </div>
       </div>
     </div>

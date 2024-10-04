@@ -5,7 +5,7 @@ const SubscribeUs = () => {
     alert("You are now a Subscriber!");
   };
   return (
-    <div className="container mx-auto px-5">
+    <div className="container mx-auto px-5 py-10">
       <div className="bg-[#093045] md:p-10 p-5 md:flex justify-between items-center rounded-lg relative overflow-hidden">
         {/* Left Side Text */}
         <div className="mb-5 md:mb-0">
@@ -29,7 +29,7 @@ const SubscribeUs = () => {
           />
           <button
             onClick={handleOnclick}
-            className="bg-blue-500 text-white rounded-full p-2 ml-2"
+            className="bg-[#093045] text-white rounded-full p-2 ml-2"
           >
             <FaArrowRight />
           </button>

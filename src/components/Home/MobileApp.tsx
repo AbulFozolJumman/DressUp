@@ -1,6 +1,6 @@
 const DownloadApp = () => {
   return (
-    <section className="pt-12 container mx-auto px-5">
+    <section className="pt-10 container mx-auto px-5">
       <h2 className="text-2xl md:text-4xl font-bold text-center text-[#093045]">
         Our Mobile App
       </h2>

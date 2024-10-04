@@ -2,12 +2,12 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <div className="bg-[#093045] min-h-screen h-full p-4 pl-0">
+    <div className="bg-white min-h-screen h-full p-4 pl-0">
       <ul className="space-y-4">
         <li>
           <Link
             href="/dashboard"
-            className="flex items-center p-2 space-x-3 rounded-md bg-white shadow hover:bg-gray-50"
+            className="flex items-center p-2 space-x-3 rounded-md bg-[#093045] shadow hover:bg-blue-800 text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const Sidebar = () => {
         <li>
           <Link
             href="/dashboard/user-info"
-            className="flex items-center p-2 space-x-3 rounded-md bg-white shadow hover:bg-gray-50"
+            className="flex items-center p-2 space-x-3 rounded-md bg-[#093045] shadow hover:bg-blue-800 text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

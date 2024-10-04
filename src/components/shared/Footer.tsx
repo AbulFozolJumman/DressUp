@@ -63,7 +63,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom footer - copyright */}
-      <div className="text-center text-white text-sm mt-8 border-t border-cyan-600 pt-4">
+      <div className="text-center text-white text-sm mt-8 border-t border-blue-800 pt-4">
         &copy; {new Date().getFullYear()} DressUp. All rights reserved.
       </div>
     </footer>
