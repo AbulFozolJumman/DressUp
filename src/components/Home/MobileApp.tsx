@@ -1,7 +1,9 @@
 const DownloadApp = () => {
   return (
     <section className="pt-12 container mx-auto px-5">
-      <h2 className="text-4xl font-bold text-left">Our Mobile App</h2>
+      <h2 className="text-2xl md:text-4xl font-bold text-center text-[#093045]">
+        Our Mobile App
+      </h2>
 
       <div className="py-10 md:py-[150px] max-w-[1536px] xl:px-24 lg:px-12 md:px-8 px-5 mx-auto ">
         <div className="rounded-[5px] bg-[#093045] max-w-[847px] py-5 md:py-0 md:h-[250px] mx-auto flex flex-col md:flex-row items-center justify-center">

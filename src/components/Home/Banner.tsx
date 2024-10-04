@@ -5,6 +5,8 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import ProductLoadingCard from "../product/ProductLoadingCard";
 import ProductCard from "../product/ProductCard";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import Link from "next/link";
+import { MdOutlineDoubleArrow } from "react-icons/md";
 
 const Banner = () => {
   const [products, setProducts] = useState<
@@ -117,6 +119,17 @@ const Banner = () => {
           <FaArrowAltCircleRight />
         </button>
       </div>
+      <Link
+        href="/products"
+        className="mt-10 bg-[#093045]  hover:bg-blue-800 rounded-full w-40 block mx-auto"
+      >
+        <button className=" text-white py-2 pl-12 rounded-full flex items-center justify-center gap-2">
+          View All
+          <span>
+            <MdOutlineDoubleArrow />
+          </span>
+        </button>
+      </Link>
     </div>
   );
 };

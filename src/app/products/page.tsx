@@ -42,10 +42,10 @@ const ProductsPage = () => {
 
   return (
     <div className="py-10 container mx-auto px-5">
-      <h1 className="text-3xl font-bold mb-8">Our Products</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center">Our Products</h1>
 
       {/* Filters and Sorting */}
-      <div className="mb-6 flex justify-between">
+      <div className="mb-6 flex md:justify-center justify-between md:gap-10 gap-5">
         {/* Category Filter */}
         <div>
           <label htmlFor="category" className="mr-2">

@@ -5,7 +5,7 @@ import Logo from "@/assets/DressUp.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#093045] text-white pt-10 pb-5 border-t border-cyan-600">
+    <footer className="bg-[#093045] text-white pt-10 pb-5">
       <div className="container mx-auto px-5 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo & Tagline */}
         <div className="flex flex-col items-center md:items-start">
