@@ -23,11 +23,11 @@ const Navbar = () => {
     logoutUser(router);
   };
   return (
-    <nav className="bg-[#00BADE] border-b border-cyan-600 w-full z-10">
-      <div className="container mx-auto px-4 md:py-1 py-1 flex justify-between items-center">
+    <nav className="bg-[#093045] border-b border-cyan-600 w-full z-10">
+      <div className="container mx-auto px-5 md:py-1 py-1 flex justify-between items-center">
         {/* Left - Logo */}
         <div className="cursor-pointer md:w-20 w-16 md:h-20 h-16">
-          <Link href="/">
+          <Link href="/" className="outline-none">
             <Image src={Logo} width={200} height={200} alt="dressUp Logo" />
           </Link>
         </div>

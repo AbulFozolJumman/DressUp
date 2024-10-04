@@ -41,7 +41,7 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className="w-full my-10 container mx-auto px-4">
+    <div className="py-10 container mx-auto px-5">
       <h1 className="text-3xl font-bold mb-8">Our Products</h1>
 
       {/* Filters and Sorting */}
@@ -86,14 +86,15 @@ const ProductsPage = () => {
 
       {/* Product Grid */}
       {isLoading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="flex justify-center items-center flex-wrap gap-5">
           <ProductLoadingCard />
           <ProductLoadingCard />
           <ProductLoadingCard />
           <ProductLoadingCard />
         </div>
       ) : data?.products?.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="flex justify-center items-center flex-wrap gap-5">
           {data.products.map((product: IProduct) => (
             <ProductCard key={product._id} product={product} />
           ))}

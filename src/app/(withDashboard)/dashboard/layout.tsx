@@ -12,8 +12,8 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen bg-[#00BADE]">
-      <div className="flex justify-between container mx-auto px-4">
+    <div className="min-h-screen bg-[#093045]">
+      <div className="flex justify-between container mx-auto px-5">
         <div className="w-[20%]">
           <Sidebar />
         </div>

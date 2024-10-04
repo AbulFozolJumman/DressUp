@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Brands = () => {
   return (
-    <div className="flex justify-between items-center py-4">
+    <div className="flex justify-between items-center py-5">
       <a href="https://shefinde.com">
         <Image
           src="https://shefinde.com/assets/images/logo.svg"

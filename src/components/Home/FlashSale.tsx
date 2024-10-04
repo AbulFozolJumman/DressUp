@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import DImage from "@/assets/Cute Kids Dress.png";
+import DImage from "@/assets/bomber jacket.png";
 
 const FlashSale = () => {
   const [products, setProducts] = useState<
@@ -35,7 +35,7 @@ const FlashSale = () => {
   }, []);
 
   return (
-    <div className="py-10 container mx-auto px-4">
+    <div className="py-10 container mx-auto px-5">
       {/* Flash Sale Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Flash Sale</h2>
@@ -52,7 +52,7 @@ const FlashSale = () => {
         {products.map((product) => (
           <div
             key={product._id}
-            className="bg-white text-gray-800 rounded-lg w-full"
+            className="bg-white text-gray-800 rounded-lg w-[300px]"
           >
             <div className="relative">
               {/* Discount Percentage Tag */}
@@ -69,7 +69,7 @@ const FlashSale = () => {
                   className="rounded-lg shadow-lg h-40 w-full object-cover"
                 />
               ) : (
-                <div className="h-40 w-full bg-gray-300 rounded-lg" />
+                <div className="h-[300px] w-[300px] bg-gray-300 rounded-lg" />
               )}
             </div>
             <h2 className="text-lg font-semibold mt-4 whitespace-nowrap overflow-hidden">

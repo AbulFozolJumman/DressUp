@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import DImage from "@/assets/Cute Kids Dress.png";
+import DImage from "@/assets/Cute_Kids_Dress2-removebg-preview.png";
 
 const Banner = () => {
   const [products, setProducts] = useState<
@@ -65,8 +65,8 @@ const Banner = () => {
   };
 
   return (
-    <div className="bg-[#00BADE] text-white py-10 relative">
-      <div className="text-center mb-10 px-4">
+    <div className="bg-white text-[#093045] py-10 relative container mx-auto">
+      <div className="text-center mb-10 px-5">
         <h1 className="text-2xl md:text-4xl font-bold">
           Explore Fashion that Defines You
         </h1>
@@ -78,18 +78,21 @@ const Banner = () => {
 
       {/* Carousel Navigation */}
       <div className="flex justify-center items-center">
-        <button onClick={handlePrev} className="text-white p-4">
+        <button
+          onClick={handlePrev}
+          className="text-[#093045] font-bold text-4xl pr-5"
+        >
           &lt;
         </button>
 
         {/* Show 3 products */}
-        <div className="flex justify-between items-center space-x-2 md:space-x-4 overflow-hidden">
+        <div className="flex justify-between items-center gap-5">
           {getVisibleProducts().map((product) => {
             if (!product) return null; // Guard clause for undefined product
             return (
               <div
                 key={product._id}
-                className="bg-white text-gray-800 rounded-lg p-2 md:p-4 w-40 md:w-60"
+                className="w-72 bg-white border border-gray-200 rounded-lg shadow-md"
               >
                 {product.image ? (
                   <Image
@@ -97,26 +100,31 @@ const Banner = () => {
                     width={200}
                     src={DImage || product.image}
                     alt={product.title}
-                    className="rounded-lg shadow-lg h-32 w-full object-cover md:h-40"
+                    className="h-72 w-72"
                   />
                 ) : (
-                  <div className="h-32 w-full bg-gray-300 rounded-lg md:h-40" />
+                  <div className="h-72 w-72 bg-gray-300" />
                 )}
-                <h2 className="text-sm md:text-lg font-semibold mt-2 md:mt-4 whitespace-nowrap overflow-hidden">
-                  {product.title}
-                </h2>
-                {/* <p className="text-xs md:text-lg text-gray-500 line-through">
+                <div className="p-5">
+                  <h2 className="text-xl font-semibold mb-2 whitespace-nowrap overflow-hidden">
+                    {product.title}
+                  </h2>
+                  {/* <p className="text-xs md:text-lg text-gray-500 line-through">
                   ${(product.price + 50).toFixed(2)}
                 </p> */}
-                <p className="text-sm md:text-xl text-gray-900 font-bold">
-                  ${product.price.toFixed(2)}
-                </p>
+                  <p className="text-sm md:text-xl text-gray-900 font-bold">
+                    ${product.price.toFixed(2)}
+                  </p>
+                </div>
               </div>
             );
           })}
         </div>
 
-        <button onClick={handleNext} className="text-white p-4">
+        <button
+          onClick={handleNext}
+          className="text-[#093045] font-bold text-4xl pl-5"
+        >
           &gt;
         </button>
       </div>
