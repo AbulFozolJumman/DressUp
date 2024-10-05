@@ -2,6 +2,7 @@ import { IProduct } from "@/types";
 import Image from "next/image";
 import DImage from "@/assets/Cute Kids Dress.png";
 import AddToCart from "@/components/shared/addToCart";
+// Add Review
 
 interface IProductId {
   params: {
