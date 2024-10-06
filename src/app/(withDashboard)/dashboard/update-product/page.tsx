@@ -1,42 +1,65 @@
 "use client";
 
-import { ICreateProduct } from "@/types";
-import Error from "next/error";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { useAddProductMutation } from "@/redux/api/product/productApi";
+import { useRouter, useParams } from "next/navigation";
+import {
+  useGetProductByIdQuery,
+  useUpdateProductByIdMutation,
+} from "@/redux/api/product/productApi";
+import { ICreateProduct } from "@/types";
 
-const CreateProductPage = () => {
-  const [createRoom] = useAddProductMutation();
+const UpdateProductPage = () => {
+  const { id } = useParams();
+  console.log(id);
   const router = useRouter();
+
+  // Fetch the product data using the product ID
+  const { data: product, isLoading, isError } = useGetProductByIdQuery(id);
+
+  // Set up the mutation for updating the product
+  const [updateProduct, { isLoading: isUpdating }] =
+    useUpdateProductByIdMutation();
+
+  // Set up the react-hook-form
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ICreateProduct>();
 
-  const onSubmit = async (data: ICreateProduct) => {
-    const formattedData = {
-      ...data,
-      price: Number(data.price),
-      ratings: Number(data.ratings),
-    };
+  // Populate the form fields with the fetched product data when available
+  useEffect(() => {
+    if (product) {
+      setValue("image", product.image);
+      setValue("title", product.title);
+      setValue("price", product.price);
+      setValue("ratings", product.ratings);
+      setValue("category", product.category);
+      setValue("description", product.description);
+    }
+  }, [product, setValue]);
 
+  // Handle the form submission for updating the product
+  const onSubmit = async (data: ICreateProduct) => {
     try {
-      console.log(formattedData);
-      await createRoom(formattedData);
-      alert("Product created successfully!");
+      await updateProduct({ id, ...data });
+      alert("Product updated successfully!");
       router.push("/dashboard/product-manager");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (err: any) {
-      throw new Error(err.message);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to update product.");
     }
   };
+
+  if (isLoading) return <div>Loading product...</div>;
+  if (isError) return <div>Error fetching product.</div>;
 
   return (
     <div className="py-10">
       <h2 className="text-3xl font-bold text-[#093045] mb-6 text-center">
-        Create New Product
+        Update Product
       </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -149,12 +172,13 @@ const CreateProductPage = () => {
         <button
           type="submit"
           className="w-full py-2 px-4 hover:bg-blue-800 text-white font-semibold rounded-md shadow-md bg-[#093045] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          disabled={isUpdating}
         >
-          Create Product
+          {isUpdating ? "Updating..." : "Update Product"}
         </button>
       </form>
     </div>
   );
 };
 
-export default CreateProductPage;
+export default UpdateProductPage;
