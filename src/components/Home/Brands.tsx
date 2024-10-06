@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 
 const Brands = () => {
   return (
-    <div className="py-10">
+    <div className="py-10 max-w-screen-2xl mx-auto">
       <h2 className="text-2xl md:text-4xl text-center font-bold mb-8 text-[#093045]">
         Top Brands
       </h2>

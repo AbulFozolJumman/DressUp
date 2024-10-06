@@ -1,13 +1,13 @@
 "use client";
 
 import FlashSaleProductCard from "../product/FlashSaleCard";
-import { useGetProductsQuery } from "@/redux/api/baseApi";
 import ProductLoadingCard from "../product/ProductLoadingCard";
 import { IProduct } from "@/types";
+import { useGetAllProductsQuery } from "@/redux/api/product/productApi";
 
 const FlashSale = () => {
   // Fetch products using the Redux hook
-  const { data, error, isLoading } = useGetProductsQuery("");
+  const { data, error, isLoading } = useGetAllProductsQuery("");
 
   const err = () => {
     throw new Error("Failed to fetch data");
@@ -30,8 +30,7 @@ const FlashSale = () => {
           <ProductLoadingCard />
         </div>
       ) : data?.products?.length > 0 ? (
-        // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div className="flex justify-center items-center flex-wrap gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {data.products.slice(4, 8).map((product: IProduct) => (
             <FlashSaleProductCard key={product._id} product={product} />
           ))}

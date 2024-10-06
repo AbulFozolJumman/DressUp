@@ -6,21 +6,6 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
   }),
-  endpoints: (builder) => ({
-    getProducts: builder.query({
-      // Accepting query params for pagination, category filtering, and sorting
-      query: ({ page = 1, category = "", sort = "asc" }) => {
-        const queryParams = new URLSearchParams({
-          page: page.toString(),
-          category,
-          sort,
-        });
-        return `/products?${queryParams}`;
-      },
-    }),
-  }),
+  tagTypes: ["Product"],
+  endpoints: () => ({}),
 });
-
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetProductsQuery } = baseApi;

@@ -21,15 +21,17 @@ const ProductCard = ({ product }: { product: IProduct }) => {
     alert("Add to Cart Successful!");
   };
   return (
-    <div className="w-72 bg-white border border-gray-200 rounded-lg shadow-md">
-      <Image
-        className="w-full h-72 object-cover"
-        height={300}
-        width={300}
-        src={DImage || product.image}
-        alt={product.title}
-      />
-      <div className="p-5">
+    <div className="shadow-md rounded-bottom w-full">
+      <div className="w-full bg-[#093045]">
+        <Image
+          height={300}
+          width={300}
+          src={DImage || product.image}
+          alt={product.title}
+          className="w-72 mx-auto h-72 object-cover"
+        />
+      </div>
+      <div className="p-5 bg-white rounded-bottom">
         <h2 className="text-xl font-semibold mb-2 whitespace-nowrap overflow-hidden">
           {product.title}
         </h2>

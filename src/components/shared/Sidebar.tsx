@@ -45,7 +45,29 @@ const Sidebar = () => {
                 d="M5 13l4 4L19 7"
               />
             </svg>
-            <span>User Info</span>
+            <span>User Cart</span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/dashboard/product-manager"
+            className="flex items-center p-2 space-x-3 rounded-md bg-[#093045] shadow hover:bg-blue-800 text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Product Manager</span>
           </Link>
         </li>
       </ul>

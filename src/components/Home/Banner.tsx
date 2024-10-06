@@ -52,8 +52,8 @@ const Banner = () => {
   // Get visible product count based on screen size
   const getVisibleProductCount = () => {
     if (width < 765) return 1; // Mobile: 1 card
-    if (width < 1023) return 2; // Tablet: 2 cards
-    if (width < 1439) return 3; // Laptop: 3 cards
+    if (width < 1023) return 3; // Tablet: 2 cards
+    if (width < 1439) return 4; // Laptop: 3 cards
     return 4; // Larger screens: 4 cards
   };
 
@@ -84,7 +84,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="bg-white text-[#093045] py-10 relative container mx-auto">
+    <div className="bg-white text-[#093045] py-10 relative">
       <div className="text-center mb-10 px-5">
         <h1 className="text-2xl md:text-4xl font-bold">
           Explore Fashion that Defines You
@@ -96,16 +96,16 @@ const Banner = () => {
       </div>
 
       {/* Carousel Navigation */}
-      <div className="flex justify-center items-center">
+      <div className="flex justify-between items-center container mx-auto">
         <button
           onClick={handlePrev}
-          className="text-[#093045] font-bold text-4xl pr-5"
+          className="text-[#093045] font-bold md:text-4xl text-2xl md:pr-5 pr-1"
         >
           <FaArrowAltCircleLeft />
         </button>
 
         {/* Show visible products */}
-        <div className="flex justify-between items-center gap-5">
+        <div className="flex justify-between items-center gap-5 w-full">
           {getVisibleProducts().map((product, index) => {
             if (!product) return <ProductLoadingCard key={index} />;
             return <ProductCard key={product._id} product={product} />;
@@ -114,7 +114,7 @@ const Banner = () => {
 
         <button
           onClick={handleNext}
-          className="text-[#093045] font-bold text-4xl pl-5"
+          className="text-[#093045] font-bold md:text-4xl text-2xl md:pl-5 pl-1"
         >
           <FaArrowAltCircleRight />
         </button>

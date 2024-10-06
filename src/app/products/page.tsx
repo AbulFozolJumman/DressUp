@@ -1,18 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useGetProductsQuery } from "@/redux/api/baseApi";
 import ProductCard from "@/components/product/ProductCard";
 import { IProduct } from "@/types";
 import ProductLoadingCard from "@/components/product/ProductLoadingCard";
+import { useGetAllProductsQuery } from "@/redux/api/product/productApi";
 
 const ProductsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState<string>("");
   const [sort, setSort] = useState<string>("asc");
 
-  // Fetch products using the Redux hook
-  const { data, error, isLoading } = useGetProductsQuery({
+  const { data, error, isLoading } = useGetAllProductsQuery({
     page: currentPage,
     category,
     sort,
@@ -42,10 +41,10 @@ const ProductsPage = () => {
 
   return (
     <div className="py-10 container mx-auto px-5">
-      <h1 className="text-3xl font-bold mb-8 text-center">Our Products</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Our Products</h1>
 
       {/* Filters and Sorting */}
-      <div className="mb-6 flex md:justify-center justify-between md:gap-10 gap-5">
+      <div className="mb-6 flex justify-between items-center gap-5">
         {/* Category Filter */}
         <div>
           <label htmlFor="category" className="mr-2">
@@ -86,15 +85,14 @@ const ProductsPage = () => {
 
       {/* Product Grid */}
       {isLoading ? (
-        <div className="flex justify-center items-center flex-wrap gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           <ProductLoadingCard />
           <ProductLoadingCard />
           <ProductLoadingCard />
           <ProductLoadingCard />
         </div>
       ) : data?.products?.length > 0 ? (
-        // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div className="flex justify-center items-center flex-wrap gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {data.products.map((product: IProduct) => (
             <ProductCard key={product._id} product={product} />
           ))}

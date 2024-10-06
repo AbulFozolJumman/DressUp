@@ -21,21 +21,24 @@ const FlashSaleProductCard = ({ product }: { product: IProduct }) => {
     alert("Add to Cart Successful!");
   };
   return (
-    <div className="w-72 bg-white border border-gray-200 rounded-lg shadow-md">
+    <div className="shadow-md rounded-bottom">
       <div className="relative">
         <div className="absolute top-2 left-2 bg-white text-[#093045] font-semibold text-lg p-2 rounded-full">
           30%
         </div>
-        <Image
-          height={300}
-          width={300}
-          src={DImage || product.image}
-          alt={product.title}
-          className="w-full h-72 object-cover"
-        />
+
+        <div className="w-full bg-[#093045]">
+          <Image
+            height={300}
+            width={300}
+            src={DImage || product.image}
+            alt={product.title}
+            className="w-72 mx-auto h-72 object-cover"
+          />
+        </div>
       </div>
 
-      <div className="p-5">
+      <div className="p-5 bg-white rounded-bottom">
         <h2 className="text-xl font-semibold mb-2 whitespace-nowrap overflow-hidden">
           {product.title}
         </h2>

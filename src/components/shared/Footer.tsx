@@ -1,4 +1,5 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import { TbWorldWww } from "react-icons/tb";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/assets/DressUp.png";
@@ -27,7 +28,7 @@ const Footer = () => {
           <Link href="/products">
             <button className="text-white hover:text-blue-600">Products</button>
           </Link>
-          <Link href="/about-us">
+          <Link href="/about">
             <button className="text-white hover:text-blue-600">About Us</button>
           </Link>
           <Link href="/dashboard">
@@ -40,20 +41,37 @@ const Footer = () => {
         {/* Social & Contact Info */}
         <div className="flex flex-col items-center md:items-end space-y-4">
           <h3 className="font-semibold text-xl">Follow Us</h3>
-          <div className="flex space-x-4">
-            <Link href="https://facebook.com" target="_blank" rel="noreferrer">
+          <div className="flex items-center space-x-4">
+            <Link
+              href="https://www.facebook.com/abulfozoljumman/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaFacebook className="text-2xl hover:text-blue-500 bg-[#093045]" />
             </Link>
-            <Link href="https://instagram.com" target="_blank" rel="noreferrer">
-              <FaInstagram className="text-2xl hover:text-pink-500 bg-[#093045]" />
+            <Link
+              href="https://www.linkedin.com/in/abul-fozol-jumman-414734279/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedin className="text-2xl hover:text-blue-700 bg-[#093045]" />
             </Link>
-            <Link href="https://twitter.com" target="_blank" rel="noreferrer">
-              <FaTwitter className="text-2xl hover:text-blue-400 bg-[#093045]" />
+            <Link
+              href="https://abul-fozol-jumman.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <TbWorldWww className="text-3xl hover:text-green-500 bg-[#093045]" />
             </Link>
-            <Link href="https://github.com" target="_blank" rel="noreferrer">
+            <Link
+              href="https://github.com/AbulFozolJumman/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaGithub className="text-2xl hover:text-gray-400 bg-[#093045]" />
             </Link>
           </div>
+
           <p className="text-white text-right">
             Contact: support@dress-up.com
             <br />
