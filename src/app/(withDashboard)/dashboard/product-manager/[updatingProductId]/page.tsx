@@ -9,7 +9,7 @@ import {
 } from "@/redux/api/product/productApi";
 import { ICreateProduct } from "@/types";
 
-interface IUpdatingProductId {
+export interface IUpdatingProductId {
   params: {
     updatingProductId: string;
   };
@@ -52,7 +52,7 @@ const UpdateProductPage = ({ params }: IUpdatingProductId) => {
   // Handle the form submission for updating the product
   const onSubmit = async (data: ICreateProduct) => {
     try {
-      await updateProduct({ id: params.updatingProductId, ...data });
+      await updateProduct({ id: params.updatingProductId, data });
       alert("Product updated successfully!");
       router.push("/dashboard/product-manager");
     } catch (error) {

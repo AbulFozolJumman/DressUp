@@ -10,13 +10,15 @@ const ProductApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Product"],
     }),
+
     getAllProducts: builder.query({
-      query: ({ page = 1, category = "", sort = "asc" }) => {
+      query: ({ page = 1, category = "", sort = "", limit = "" }) => {
         // Building query params using URLSearchParams
         const queryParams = new URLSearchParams({
           page: page.toString(),
           category,
-          sort,
+          sort, // This could be empty, meaning it will sort by createdAt in the backend
+          limit, // Optional limit; when omitted, backend returns all products
         });
 
         return {
@@ -34,6 +36,7 @@ const ProductApi = baseApi.injectEndpoints({
       }),
       providesTags: (id) => [{ type: "Product", id }],
     }),
+
     deleteProductById: builder.mutation({
       query: (id) => ({
         url: `/products/${id}`,
@@ -41,6 +44,7 @@ const ProductApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Product"],
     }),
+
     updateProductById: builder.mutation({
       query: ({ id, data }) => ({
         url: `/products/${id}`,

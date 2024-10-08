@@ -9,24 +9,31 @@ import { useGetAllProductsQuery } from "@/redux/api/product/productApi";
 const ProductsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState<string>("");
-  const [sort, setSort] = useState<string>("asc");
+  const [sort, setSort] = useState<string>("");
+  const [limit, setLimit] = useState<string>("12");
 
   const { data, error, isLoading } = useGetAllProductsQuery({
     page: currentPage,
     category,
     sort,
+    limit,
   });
 
   const handleCategoryChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setCategory(event.target.value);
-    setCurrentPage(1); // Reset to first page when category changes
+    setCurrentPage(1);
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(event.target.value);
-    setCurrentPage(1); // Reset to first page when sort changes
+    setCurrentPage(1);
+  };
+
+  const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setLimit(event.target.value);
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page: number) => {
@@ -74,8 +81,27 @@ const ProductsPage = () => {
             onChange={handleSortChange}
             className="border p-2 rounded"
           >
+            <option value="">Recently Added</option>
             <option value="asc">Low to High</option>
             <option value="desc">High to Low</option>
+          </select>
+        </div>
+
+        {/* Set Limit */}
+        <div className="hidden">
+          <label htmlFor="limit" className="mr-2">
+            Products per Page:
+          </label>
+          <select
+            id="limit"
+            value={limit}
+            onChange={handleLimitChange}
+            className="border p-2 rounded"
+          >
+            <option value="">All</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
           </select>
         </div>
       </div>

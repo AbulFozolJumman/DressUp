@@ -54,17 +54,13 @@ const ProductManagerPage = () => {
             <tbody>
               {data.products.map((product: IProduct) => (
                 <tr key={product._id} className="text-center">
-                  {/* <td className="border px-4 py-2">{product._id}</td> */}
                   <td className="border px-4 py-2">{product.title}</td>
                   <td className="border px-4 py-2">${product.price}</td>
                   <td className="border px-4 py-2">{product.category}</td>
                   <td className="border px-4 py-2 space-x-2">
                     {/* Update Button */}
                     <Link href={`/dashboard/product-manager/${product._id}`}>
-                      <button
-                        // onClick={() => handleUpdate(product._id)}
-                        className="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600"
-                      >
+                      <button className="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600">
                         Update
                       </button>
                     </Link>
