@@ -3,9 +3,10 @@
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import Image from "next/image";
-import { registerUser } from "@/utils/actions/registerUser";
 import { useRouter } from "next/navigation";
-import { setToLocalStorage } from "@/utils/localStorageManager";
+import { useDispatch } from "react-redux";
+import { useSignupMutation } from "@/redux/api/auth/authApi";
+import { setToken, setUser } from "@/redux/features/userSlice";
 
 export type UserData = {
   username: string;
@@ -17,21 +18,27 @@ export type UserData = {
 const RegisterPage = () => {
   const { register, handleSubmit } = useForm<UserData>();
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [signup] = useSignupMutation();
 
   const onSubmit = async (data: UserData) => {
     try {
-      const res = await registerUser(data);
+      const res = await signup(data).unwrap();
       if (res.accessToken) {
         console.log(res);
         alert(res.message);
-        setToLocalStorage("accessToken", res.accessToken);
-        router.push("/dashboard");
+
+        // Dispatch actions to set user and token in Redux
+        dispatch(setToken(res.accessToken));
+        dispatch(setUser(res.user));
+
+        router.push("/dashboard"); // Navigate to the dashboard after signup
         router.refresh();
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error(err.message);
-      throw new Error(err.message);
+      alert("Signup failed, please try again");
     }
   };
 
@@ -111,7 +118,7 @@ const RegisterPage = () => {
             <p className="text-center">
               Already have an account?{" "}
               <Link href="/login" className="text-indigo-600">
-                Login
+                Sign in here
               </Link>
             </p>
           </form>

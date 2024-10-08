@@ -1,12 +1,13 @@
 "use client";
 
-import { loginUser } from "@/utils/actions/loginUser";
-import { setToLocalStorage } from "@/utils/localStorageManager";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+// import { signIn } from "next-auth/react";
+import { useLoginMutation } from "@/redux/api/auth/authApi";
+import { setToken, setUser } from "@/redux/features/userSlice";
 
 export type FormValues = {
   email: string;
@@ -16,21 +17,27 @@ export type FormValues = {
 const LoginPage = () => {
   const { register, handleSubmit } = useForm<FormValues>();
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [login] = useLoginMutation();
 
   const onSubmit = async (data: FormValues) => {
     try {
-      const res = await loginUser(data);
+      const res = await login(data).unwrap();
       if (res.accessToken) {
         console.log(res);
         alert(res.message);
-        setToLocalStorage("accessToken", res.accessToken);
-        router.push("/dashboard");
+
+        // Dispatch actions to set user and token in Redux
+        dispatch(setToken(res.accessToken));
+        dispatch(setUser(res.user));
+
+        router.push("/dashboard"); // Navigate to the dashboard after login
         router.refresh();
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error(err.message);
-      throw new Error(err.message);
+      alert("Login failed, please check your credentials");
     }
   };
 
@@ -91,7 +98,7 @@ const LoginPage = () => {
             </p>
           </form>
 
-          <p className="text-center mt-4">Or Sign Up Using</p>
+          {/* <p className="text-center mt-4">Or Sign Up Using</p>
           <div className="flex justify-center mt-4">
             <button
               className="mx-2 bg-white p-3 rounded-full shadow"
@@ -115,7 +122,7 @@ const LoginPage = () => {
                 alt="github logo"
               />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ interface IUser {
   _id: string;
   role: "user" | "admin";
   email: string;
-  name: string;
+  username: string;
   imageUrl: string;
 }
 

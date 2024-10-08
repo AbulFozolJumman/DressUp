@@ -7,20 +7,26 @@ import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Image from "next/image";
 import Logo from "@/assets/DressUp.png";
-import useUserInfo from "@/hooks/useUserInfo";
-import { useRouter } from "next/navigation";
-import { logoutUser } from "@/utils/logoutUser";
+// import useUserInfo from "@/hooks/useUserInfo";
+// import { useRouter } from "next/navigation";
+// import { logoutUser } from "@/utils/logoutUser";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { useAppDispatch } from "@/redux/hooks";
+import { logout } from "@/redux/features/userSlice";
 
 const Navbar = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const userInfo = useUserInfo();
-  const router = useRouter();
+  // const userInfo = useUserInfo();
+  const { user } = useSelector((state: RootState) => state.user);
+  const dispatch = useAppDispatch();
+  // const router = useRouter();
   const handleLogOut = () => {
-    logoutUser(router);
+    if (window.confirm("Are you sure you want to logout?")) {
+      dispatch(logout());
+    }
   };
   return (
     <nav className="bg-[#093045] w-full z-10">
@@ -63,7 +69,7 @@ const Navbar = () => {
           </Link>
 
           {/* Login/Logout */}
-          {userInfo.role ? (
+          {user ? (
             <button
               onClick={handleLogOut}
               className="flex items-center space-x-2 text-white hover:text-blue-600"

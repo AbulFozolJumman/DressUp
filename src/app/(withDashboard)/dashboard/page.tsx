@@ -1,22 +1,22 @@
 "use client";
 
-import useUserInfo from "@/hooks/useUserInfo";
+import { RootState } from "@/redux/store";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const DashboardPage = () => {
-  const userInfo = useUserInfo();
+  const { user } = useSelector((state: RootState) => state.user);
+  console.log(user?.imageUrl);
   return (
     <div>
-      {userInfo?.role ? (
+      {user ? (
         <>
           <h1 className="text-4xl text-center mt-10">
-            Welcome {userInfo?.email}
+            Welcome {user?.username}
           </h1>
+          <h1 className="text-4xl text-center mt-10">Email: {user?.email}</h1>
           <Image
-            src={
-              userInfo?.image ||
-              "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-            }
+            src={user?.imageUrl}
             width={100}
             height={100}
             alt="user image"

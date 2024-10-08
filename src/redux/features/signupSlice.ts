@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "",
+  username: "",
   email: "",
   password: "",
   imageUrl: "",
@@ -12,7 +12,7 @@ const signupSlice = createSlice({
   initialState,
   reducers: {
     setName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+      state.username = action.payload;
     },
     setEmail: (state, action: PayloadAction<string>) => {
       state.email = action.payload;
