@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { addToCart } from "@/redux/slices/cartSlice";
+import { addToCart } from "@/redux/features/cartSlice";
 import { FaCartPlus } from "react-icons/fa";
 import { IProduct } from "@/types";
 

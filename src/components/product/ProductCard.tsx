@@ -2,7 +2,7 @@ import { IProduct } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { addToCart } from "@/redux/slices/cartSlice";
+import { addToCart } from "@/redux/features/cartSlice";
 import DImage from "@/assets/bomber_jacket-removebg-preview.png";
 import { FaCartPlus, FaStar } from "react-icons/fa";
 

@@ -11,6 +11,7 @@ export type UserData = {
   username: string;
   email: string;
   password: string;
+  imageUrl: string;
 };
 
 const RegisterPage = () => {
@@ -83,6 +84,18 @@ const RegisterPage = () => {
               <input
                 type="password"
                 {...register("password")}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700">
+                Image Url
+              </label>
+              <input
+                type="imageUrl"
+                {...register("imageUrl")}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 required
               />
