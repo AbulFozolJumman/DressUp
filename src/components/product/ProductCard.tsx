@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/features/cartSlice";
-import DImage from "@/assets/bomber_jacket-removebg-preview.png";
+// import DImage from "@/assets/bomber_jacket-removebg-preview.png";
 import { FaCartPlus, FaStar } from "react-icons/fa";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
@@ -26,7 +26,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         <Image
           height={300}
           width={300}
-          src={DImage || product.image}
+          src={product.image}
+          // src={DImage || product.image}
           alt={product.title}
           className="w-72 mx-auto h-72 object-cover"
         />

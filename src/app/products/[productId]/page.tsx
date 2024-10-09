@@ -1,6 +1,6 @@
 import { IProduct } from "@/types";
 import Image from "next/image";
-import DImage from "@/assets/Cute Kids Dress.png";
+// import DImage from "@/assets/Cute Kids Dress.png";
 import AddToCart from "@/components/shared/addToCart";
 // Add Review
 
@@ -34,7 +34,8 @@ const ProductDetails = async ({ params }: IProductId) => {
           className="w-full h-96 object-cover"
           height={350}
           width={400}
-          src={DImage || data.product.image}
+          // src={DImage || data.product.image}
+          src={data.product.image}
           alt={data.product.title}
         />
         <div className="p-8">
