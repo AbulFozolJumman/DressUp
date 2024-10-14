@@ -33,16 +33,30 @@ const Sidebar = () => {
             <span className="hidden md:block">Dashboard</span>
           </Link>
         </li>
-        <li>
-          <Link
-            href="/dashboard/user-cart"
-            className="flex items-center justify-center md:justify-start p-2 space-x-3 rounded-md bg-[#093045] shadow hover:bg-blue-800 text-white"
-          >
-            <FaShoppingCart />
-            <span className="hidden md:block">User Cart</span>
-          </Link>
-        </li>
 
+        {user?.role === "user" && (
+          <li>
+            <Link
+              href="/dashboard/user-cart"
+              className="flex items-center justify-center md:justify-start p-2 space-x-3 rounded-md bg-[#093045] shadow hover:bg-blue-800 text-white"
+            >
+              <FaShoppingCart />
+              <span className="hidden md:block">User Cart</span>
+            </Link>
+          </li>
+        )}
+
+        {user?.role === "admin" && (
+          <li>
+            <Link
+              href="/dashboard/stats"
+              className="flex items-center justify-center md:justify-start p-2 space-x-3 rounded-md bg-[#093045] shadow hover:bg-blue-800 text-white"
+            >
+              <IoStatsChart />
+              <span className="hidden md:block">Statistics</span>
+            </Link>
+          </li>
+        )}
         {user?.role === "admin" && (
           <li>
             <Link
@@ -64,17 +78,6 @@ const Sidebar = () => {
                 />
               </svg>
               <span className="hidden md:block">Product Manager</span>
-            </Link>
-          </li>
-        )}
-        {user?.role === "admin" && (
-          <li>
-            <Link
-              href="/dashboard/stats"
-              className="flex items-center justify-center md:justify-start p-2 space-x-3 rounded-md bg-[#093045] shadow hover:bg-blue-800 text-white"
-            >
-              <IoStatsChart />
-              <span className="hidden md:block">Statistics</span>
             </Link>
           </li>
         )}

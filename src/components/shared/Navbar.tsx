@@ -57,16 +57,19 @@ const Navbar = () => {
         {/* Right - Shopping Cart and Login/Logout */}
         <div className="flex items-center md:space-x-6 space-x-5">
           {/* Shopping Cart */}
-          <Link href="/dashboard/user-cart">
-            <button className="relative">
-              <FaShoppingCart className="text-2xl hover:text-blue-600 bg-[#093045] text-white" />
-              {cartCount > 0 && (
-                <span className="absolute bottom-4 left-4 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-          </Link>
+
+          {user?.role !== "admin" && (
+            <Link href="/dashboard/user-cart">
+              <button className="relative">
+                <FaShoppingCart className="text-2xl hover:text-blue-600 bg-[#093045] text-white" />
+                {cartCount > 0 && (
+                  <span className="absolute bottom-4 left-4 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+            </Link>
+          )}
 
           {/* Login/Logout */}
           {user ? (

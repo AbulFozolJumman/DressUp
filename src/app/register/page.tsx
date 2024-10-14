@@ -43,23 +43,23 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="my-10">
+    <div className="py-10 container mx-auto px-5">
       <h1 className="text-center text-4xl mb-5">
         Register <span className="text-indigo-600">Now</span>
       </h1>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 grid-cols-1 items-center gap-5">
         <div>
           <Image
             src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg"
             width={500}
             height={200}
             alt="register page"
-            className="w-full h-[85%]"
+            className="w-full"
           />
         </div>
 
-        <div className="w-[70%] h-[70%] shadow-lg bg-white rounded-lg">
-          <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
+        <div className="shadow-lg bg-white rounded-lg border p-5 md:p-10">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 Full Name

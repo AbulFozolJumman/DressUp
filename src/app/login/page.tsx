@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-// import { signIn } from "next-auth/react";
 import { useLoginMutation } from "@/redux/api/auth/authApi";
 import { setToken, setUser } from "@/redux/features/userSlice";
 
@@ -15,7 +14,7 @@ export type FormValues = {
 };
 
 const LoginPage = () => {
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit, setValue } = useForm<FormValues>();
   const router = useRouter();
   const dispatch = useDispatch();
   const [login] = useLoginMutation();
@@ -41,24 +40,34 @@ const LoginPage = () => {
     }
   };
 
+  // Pre-fill credentials for admin and user
+  const fillDemoCredentials = (role: "admin" | "user") => {
+    if (role === "admin") {
+      setValue("email", "admin@gmail.com");
+    } else {
+      setValue("email", "user@gmail.com");
+    }
+    setValue("password", "12345678");
+  };
+
   return (
-    <div className="my-10">
+    <div className="py-10 container mx-auto px-5">
       <h1 className="text-center text-4xl mb-5">
         Login <span className="text-indigo-600">Here</span>
       </h1>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 grid-cols-1 items-center gap-5">
         <div>
           <Image
             src="https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg"
             width={500}
             height={200}
             alt="login page"
-            className="w-full h-[85%]"
+            className="w-full"
           />
         </div>
 
-        <div className="w-[70%] h-[80%] shadow-lg bg-white rounded-lg">
-          <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
+        <div className="shadow-lg bg-white rounded-lg p-5 md:p-10 border">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 Email
@@ -90,7 +99,7 @@ const LoginPage = () => {
               Login
             </button>
 
-            <p className="text-center">
+            <p className="text-center mt-4">
               Don&apos;t have an account?{" "}
               <Link href="/register" className="text-indigo-600">
                 Create an account
@@ -98,31 +107,21 @@ const LoginPage = () => {
             </p>
           </form>
 
-          {/* <p className="text-center mt-4">Or Sign Up Using</p>
-          <div className="flex justify-center mt-4">
+          {/* Demo credentials buttons */}
+          <div className="flex justify-center mt-5">
             <button
-              className="mx-2 bg-white p-3 rounded-full shadow"
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() => fillDemoCredentials("admin")}
+              className="mx-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg"
             >
-              <Image
-                src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
-                width={50}
-                height={50}
-                alt="google logo"
-              />
+              Admin Login
             </button>
             <button
-              className="mx-2 bg-white p-3 rounded-full shadow"
-              onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
+              onClick={() => fillDemoCredentials("user")}
+              className="mx-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg"
             >
-              <Image
-                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                width={35}
-                height={35}
-                alt="github logo"
-              />
+              User Login
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
