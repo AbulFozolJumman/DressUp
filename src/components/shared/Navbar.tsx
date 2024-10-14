@@ -57,7 +57,7 @@ const Navbar = () => {
         {/* Right - Shopping Cart and Login/Logout */}
         <div className="flex items-center md:space-x-6 space-x-5">
           {/* Shopping Cart */}
-          <Link href="/dashboard/user-info">
+          <Link href="/dashboard/user-cart">
             <button className="relative">
               <FaShoppingCart className="text-2xl hover:text-blue-600 bg-[#093045] text-white" />
               {cartCount > 0 && (

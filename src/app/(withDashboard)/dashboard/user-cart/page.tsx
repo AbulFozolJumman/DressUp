@@ -1,6 +1,6 @@
 import Cart from "@/components/dashboard/Cart";
 
-const UserInfoPage = () => {
+const UserCartPage = () => {
   return (
     <div>
       <h1 className="text-4xl text-center mt-10">User Cart</h1>
@@ -9,4 +9,4 @@ const UserInfoPage = () => {
   );
 };
 
-export default UserInfoPage;
+export default UserCartPage;
