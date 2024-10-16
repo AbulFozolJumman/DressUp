@@ -28,17 +28,19 @@ const ProductDetails = async ({ params }: IProductId) => {
   const data = await res.json();
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
-        <Image
-          className="w-full h-96 object-cover"
-          height={350}
-          width={400}
-          // src={DImage || data.product.image}
-          src={data.product.image}
-          alt={data.product.title}
-        />
-        <div className="p-8">
+    <div className="container mx-auto px-5 my-10">
+      <div className="flex items-center md:flex-row flex-col border border-gray-200 rounded-lg shadow-md overflow-hidden">
+        <div className="md:w-1/2">
+          <Image
+            className="w-full"
+            height={500}
+            width={500}
+            // src={DImage || data.product.image}
+            src={data.product.image}
+            alt={data.product.title}
+          />
+        </div>
+        <div className="md:p-10 p-5 md:w-1/2">
           <h1 className="text-3xl font-bold mb-4">{data.product.title}</h1>
           <p className="text-gray-500 text-sm mb-4">{data.product.category}</p>
           <p className="text-lg font-bold mb-4">

@@ -43,7 +43,7 @@ const Banner = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       handleNext();
-    }, 5000); // Change slide every 5 seconds
+    }, 500000); // Change slide every 5 seconds
 
     return () => clearInterval(intervalId); // Cleanup on component unmount
     // eslint-disable-next-line react-hooks/exhaustive-deps
